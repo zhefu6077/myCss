@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Css基础及原理</title>
+    <style>
+        *{
+            margin: 0;padding: 0;    font-family: -apple-system,SF UI Text,Arial,PingFang SC,Hiragino Sans GB,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;
+        }
+        body{
+            background: #eee
+        }
+        .box{
+            width: 900px;margin: 20px auto;background: #fff;border: 1px solid #ccc;padding: 30px 20px
+        }
+        h2{
+            font-size: 22px;margin-bottom: 15px
+        }
+        p{
+            line-height: 30px
+        }
+        .p-gray{
+            color: gray
+        }
+        .red{
+            color: red
+        }
+        .tc{
+            text-align: center
+        }
+        ul{
+            list-style: none;overflow: hidden;margin-bottom: 30px
+        }
+        li{
+            margin-top: 10px;line-height: 30px;
+        }
+        .code{
+            background: #e2e2e2;margin-bottom: 10px
+        }
+        .mt20{
+            margin-top: 40px
+        }
+       
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h2>一、样式权重</h2>
+        <p class="tc"><img src="img/1.png"></p>
+        <ul>
+            <li>第一等：代表内联样式，如: style=””，权值为1000。</li> 
+            <li>第二等：代表ID选择器，如：#content，权值为100。</li> 
+            <li>第三等：代表类，伪类和属性选择器，如.content，权值为10。</li> 
+            <li>第四等：代表类型选择器和伪元素选择器，如div p，权值为1。</li> 
+        </ul> 
+       
+        <p>详见代码</p>
+        <p class="p-gray">css代码</p>
+        <xmp class="code">
+            #aaa {
+                color: red
+            }
+            .bbb {
+                color: blue
+            }
+            div p {
+                color: gray;
+            }
+        </xmp>         
+        <p class="p-gray">html代码</p>  
+        <xmp class="code">
+            <div>
+                <span id="aaa" class="bbb" style="color:green">我的大学生活</span>
+            </div>  
+        </xmp>   
+        <p class="p-gray">浏览器显示效果</p>  
+        <style>
+            #aaa {
+                color: red
+            }
+            .bbb {
+                color: blue
+            }
+            div span {
+                color: gray;
+            }
+        </style>
+        <div>
+            <span id="aaa" class="bbb" style="color:green">我的大学生活</span>
+        </div>
+        <div class="mt20">
+            <p>权重算出来了，但是某个元素到底用哪个样式，还有3个规则：</p>
+            <p>1、如果样式上加有!important标记，例如：</p>
+            <xmp class="code">
+            p{ color: gray !important}  
+            </xmp>  
+            <p>那么始终采用这个标记的样式。<br>
+            2、匹配的内容按照CSS权重排序，权重大的优先；<br>
+            3、如果权重也一样，按照它在CSS样式表里声明的顺序，后声明的优先，例如：
+            </p>
+            <xmp class="code">
+            h1 {color: blue}
+            h1 {color: red}
+            </xmp>  
+            <p>最终胜出的是color: red。</p>
+        </div>
+        <h2 class="mt20">三、结合A网项目</h2>
+        <p><img src="img/12.png" width="900" ></p>
+        <p>另一个例子</p>
+        <p><img src="img/31.png" width="900" ></p>
+        <p><img src="img/32.png" width="900" ></p>
+        <p><img src="img/33.png" width="900" ></p>
+        <p><img src="img/34.png" width="900" ></p>
+        
+
+       
+    </div>
+    
+</body>
+</html>

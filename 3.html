@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Css基础及原理</title>
+    <style>
+        *{
+            margin: 0;padding: 0;    font-family: -apple-system,SF UI Text,Arial,PingFang SC,Hiragino Sans GB,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;
+        }
+        body{
+            background: #eee
+        }
+        .box{
+            width: 900px;margin: 20px auto;background: #fff;border: 1px solid #ccc;padding: 30px 20px
+        }
+        h2{
+            font-size: 22px;margin-bottom: 15px
+        }
+        p{
+            line-height: 30px
+        }
+        .p-gray{
+            color: gray
+        }
+        .red{
+            color: red
+        }
+        .tc{
+            text-align: center
+        }
+
+        .code{
+            background: #e2e2e2;margin-bottom: 10px
+        }
+        .mt20{
+            margin-top: 40px
+        }
+       
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h2>一、高度坍塌产生的原因？</h2>
+        <p>父元素的高度默认是被子元素撑开的，也就是子元素多高，父元素就多高。<br>
+        但是当为子元素设置浮动以后，子元素会完全脱离文档流，此时将会导致子元素无法撑起父元素的高度，导致父元素的高度塌陷。
+        </p>
+        <p class="p-gray">CSS代码：</p>
+        <xmp class="code">
+            <style>
+                ul{
+                    border: 10px red solid;
+                    list-style: none;           
+                }
+                
+                li{
+                    width: 100px;
+                    height: 100px;
+                    background-color: blue;
+                    margin-right: 10px;
+                    float: left;
+                    color:white
+                }   
+            </style>    
+        </xmp> 
+        <p class="p-gray">HTML代码：</p>
+        <xmp class="code">
+            <ul>
+                <li>我是li</li>
+                <li>我是li</li>
+            </ul>   
+        </xmp> 
+        <p class="p-gray">浏览器显示效果</p> 
+        <div style="overflow:hidden;margin-bottom:30px">
+            <style>
+                ul{
+                    border: 10px red solid;
+                    list-style: none;         
+                }
+                
+                li{
+                    width: 100px;
+                    height: 100px;
+                    background-color: blue;
+                    margin-right: 10px;
+                    float: left;
+                    color:white
+                }   
+            </style>   
+            <ul>
+                <li>我是li</li>
+                <li>我是li</li>
+            </ul>
+        </div>
+        <h2>二、如何解决？</h2>
+        <xmp class="code">
+            ul {
+                overflow: hidden
+            }
+        </xmp>   
+        <h2 class="mt20">三、结合A网项目</h2>  
+        <p><img src="img/13.png" width="900" ></p>
+        <p><img src="img/7.png" width="900" ></p>
+        <p><img src="img/8.png" width="900" ></p>
+        <p><img src="img/9.png" width="900" ></p>
+        <p class="mt20">A网中存在很多高度坍塌的问题！</p>
+        <p><img src="img/27.png" width="900" ></p>
+    </div>
+    
+</body>
+</html>

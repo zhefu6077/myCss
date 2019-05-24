@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Css基础及原理</title>
+    <style>
+        *{
+            margin: 0;padding: 0;    font-family: -apple-system,SF UI Text,Arial,PingFang SC,Hiragino Sans GB,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;
+        }
+        body{
+            background: #eee
+        }
+        .box{
+            width: 900px;margin: 20px auto;background: #fff;border: 1px solid #ccc;padding: 30px 20px
+        }
+        h2{
+            font-size: 22px;margin: 20px 0 15px
+        }
+        p{
+            line-height: 30px
+        }
+        .p-gray{
+            color: gray
+        }
+        .red{
+            color: red
+        }
+        .tc{
+            text-align: center
+        }
+
+        .code{
+            background: #e2e2e2;margin-bottom: 10px;line-height: 24px
+        }
+        .mt20{
+            margin-top: 40px
+        }
+       
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h2>一、何为vertical-align？</h2>
+        <p>所谓vertical-align是指元素垂直对齐。具体知识点请参考这篇文章。<br>请点击 <a href="https://www.zhangxinxu.com/wordpress/2010/05/%E6%88%91%E5%AF%B9css-vertical-align%E7%9A%84%E4%B8%80%E4%BA%9B%E7%90%86%E8%A7%A3%E4%B8%8E%E8%AE%A4%E8%AF%86%EF%BC%88%E4%B8%80%EF%BC%89/" target="new">CSS属性——vertical-align</a></p>
+        <h2>二、总结vertical-align特性</h2>
+        <p>1、vertical-align默认是baseline基线</p>
+        <p>2、只有在行内块元素inline-block,才起作用</p>
+        <p>3、vertical-align属性与数值，参照上面的推荐文章。着重理解bottom和text-bottom之间的区别</p>
+        <p>4、vertical-align:middle属性的表现与否，仅仅与其父标签有关</p>
+        
+    </div>
+    
+</body>
+</html>

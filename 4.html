@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Css基础及原理</title>
+    <style>
+        *{
+            margin: 0;padding: 0;    font-family: -apple-system,SF UI Text,Arial,PingFang SC,Hiragino Sans GB,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;
+        }
+        body{
+            background: #eee
+        }
+        .box{
+            width: 900px;margin: 20px auto;background: #fff;border: 1px solid #ccc;padding: 30px 20px
+        }
+        h2{
+            font-size: 22px;margin: 20px 0 15px
+        }
+        p{
+            line-height: 30px
+        }
+        .p-gray{
+            color: gray
+        }
+        .red{
+            color: red
+        }
+        .tc{
+            text-align: center
+        }
+
+        .code{
+            background: #e2e2e2;margin-bottom: 10px;line-height: 24px
+        }
+        .mt20{
+            margin-top: 40px
+        }
+       
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h2>一、何为行高，line-height？</h2>
+        <p>所谓行高是指文本行基线间的垂直距离。要想理解这句话首先得了解几个基本知识。<br>请点击 <a href="4-1.mhtml">CSS行高——line-height</a></p>
+        <h2>二、line-height与line boxes高度</h2>
+        <p>CSS中起高度作用的应该就是height以及line-height了吧！如果一个标签没有定义height属性，那么其最终表现的高度一定是由line-height起作用。</p>
+        <p class="p-gray">先看一段代码：</p>
+        <xmp class="code">
+            <!DOCTYPE html>
+            <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <style>
+                    .test1{font-size:20px; line-height:0; border:1px solid red; background:#eeeeee;}
+                    .test2{font-size:0; line-height:20px; border:1px solid blue; background:#eeeeee;}
+                </style>
+            </head>
+            <body>
+                <div class="test1">测试</div>
+                <div class="test2">测试</div>
+            </body>
+            </html>
+        </xmp> 
+        <p class="p-gray">浏览器显示效果</p> 
+        <div>
+            <img src="img/2.png">
+        </div>
+        <p>结果是如此的显而易见，<br>
+            test1 div有文字大小，但行高为0，结果div的高度就是个0；<br>
+            test2 div文字大小为0，但是有行高，为20像素，结果div高度就是20像素。<br>
+            这就说明撑开div高度的是line-height，不是文字内容。<br><br> </p>
+        <p>到底这个line-height行高怎么就产生了高度呢？在inline box模型中，有个line boxes，它是看不见的，它的工作就是包裹每行文字。一行文字一个line boxes。例如“中国万岁”这5个字，如果它们在一行显示，只有一个line boxes罩着你；但“我是中国人”这5个字，要是竖着写，一行一个，一个字罩着一个line boxes，于是总计五个line boxes。line boxes什么特性也没有，就高度。所以一个没有设置height属性的div的高度就是由一个一个line boxes的高度堆积而成的。
+            <br><br    
+        </p>
+        <p>其实line boxes不是直接的生产者，真正起作用的是它的手下 – inline boxes，也就是文字，图片，<span>之类的inline属性的标签。<br>line boxes根据手下，谁的line-height值最高，它就要谁的值，形成高度。例如，
+        <xmp class="code">
+            <span style="line-height:20px;">取手下line-height
+                <span style="line-height:40px;">最高</span>的值
+            </span>。
+        </xmp>则line boxes的高度就是40像素了。</p>
+        <h2>三、行高的垂直居中性</h2>
+        <p>行高还有一个特性，叫做垂直居中性。line-height的最终表现是通过line boxes实现的，而无论line boxes所占据的高度是多少（无论比文字大还是比文字小），其占据的空间都是与文字内容公用水平中垂线的。还拿上面这张图来说吧。</p>
+        <div>
+            <img src="img/2.png">
+        </div>
+        <p>看test1的结果，此时line boxes的高度为0，但是它是以文字“测试”二字的水平中垂线对称分布的。这一重要的特性可以用来实现文字或图片的垂直居中对齐。</p>
+        <h2 class="mt20">三、结合A网项目</h2>  
+        <p><img src="img/a.jpg" width="900" ></p>
+        <p><img src="img/b.jpg" width="900" ></p>
+        <p><img src="img/c.jpg" width="900" ></p>
+        <p><img src="img/d.jpg" width="900" ></p>
+    </div>
+    
+</body>
+</html>

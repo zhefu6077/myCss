@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Css代码重构与优化</title>
+  <link href="css/6.css" rel="stylesheet">
+</head>
+
+<body>
+  <div id="mainContent">
+    <div class="forFlow">
+
+      <div id="post_detail">
+        <!--done-->
+        <div id="topics">
+          <div class="post">
+            <h1 class="postTitle">
+              <a id="cb_post_title_url" class="postTitle2">CSS代码重构的基本方法——提高可维护性的方法</a>
+            </h1>
+            <div class="postBody">
+              <div id="cnblogs_post_body" class="blogpost-body"><a name="_labelTop"></a>
+                <p>
+                  提高CSS代码的可维护性，简单的说就是要让开发人员易于理解CSS代码，容易去修改它，不会破坏原有的功能。下面说说一些常用的手段。<br><b>1、命名与备注</b><br>命名是提高代码可读性的第一步，也是及其重要的一步。很多人都有这样的体会：命名是写代码中最让程序员头疼的事情之一，尤其是对母语非英语的开发人员来说，要找一个合适贴切的名字并不容易。提高自己命名的能力，可以多看看别人的代码。<br>下面是CSS中的一些命名相关的建议：
+                </p>
+                <div class="cnblogs_code">
+                  <pre><span style="color: #000000;">头：header
+内容：content/container
+尾：footer
+导航：nav
+侧栏：sidebar
+栏目：column
+页面外围控制整体佈局宽度：wrapper
+左右中：left right center
+登录条：loginbar
+标志：logo
+广告：banner
+页面主体：main
+热点：hot
+新闻：news
+下载：download
+子导航：subnav
+菜单：menu
+子菜单：submenu
+搜索：search
+友情链接：friendlink
+页脚：footer
+版权：copyright
+滚动：scroll
+内容：content
+标签：tags
+文章列表：list
+提示信息：msg
+小技巧：tips
+栏目标题：title
+加入：joinus
+指南：guide
+服务：service
+注册：regsiter
+状态：status
+投票：vote
+合作伙伴：partner
+导航：nav
+主导航：mainnav
+子导航：subnav
+顶导航：topnav
+边导航：sidebar
+左导航：leftsidebar
+右导航：rightsidebar
+菜单：menu
+子菜单：submenu
+标题: title
+摘要: summary</span></pre>
+                </div>
+                <p>
+                  <b>2、提取重复样式</b><br>这一个方法很容易理解，简单说就是提取相同的样式成为一个单独的类再引用，这样不仅可以精简CSS文件大小，而且CSS代码变少，更易于重用和维护。例如下面的例子：<br>原来的代码是这样：
+                </p>
+                <div class="cnblogs_code">
+                  
+                  <pre><span style="color: #800000;">.about-title</span>{<span style="color: #ff0000;">
+    margin</span>:<span style="color: #0000ff;"> 0 auto 6rem</span>;<span style="color: #ff0000;"> color</span>:<span style="color: #0000ff;"> #333</span>;<span style="color: #ff0000;"> text-align</span>:<span style="color: #0000ff;"> center</span>;<span style="color: #ff0000;"> letter-spacing</span>:<span style="color: #0000ff;"> 4px</span>;<span style="color: #ff0000;"> font-size</span>:<span style="color: #0000ff;"> 2rem</span>; 
+}<span style="color: #800000;">
+.achieve-title</span>{<span style="color: #ff0000;">
+    margin</span>:<span style="color: #0000ff;"> 0 auto 6rem</span>;<span style="color: #ff0000;"> color</span>:<span style="color: #0000ff;"> #fff</span>;<span style="color: #ff0000;"> text-align</span>:<span style="color: #0000ff;"> center</span>;<span style="color: #ff0000;"> letter-spacing</span>:<span style="color: #0000ff;"> 4px</span>;<span style="color: #ff0000;"> font-size</span>:<span style="color: #0000ff;"> 2rem</span>; 
+}</pre>
+                  
+                </div>
+                <p>这两个样式的区别在于文字颜色的不同，我们可以将其公共的样式提取出来，然后再分别设置其不同的样式</p>
+                <div class="cnblogs_code">
+                  <pre><span style="color: #800000;">.column-title</span>{<span style="color: #ff0000;">
+      margin</span>:<span style="color: #0000ff;"> 0 auto 6rem</span>;<span style="color: #ff0000;"> text-align</span>:<span style="color: #0000ff;"> center</span>;<span style="color: #ff0000;"> letter-spacing</span>:<span style="color: #0000ff;"> 4px</span>;<span style="color: #ff0000;"> font-size</span>:<span style="color: #0000ff;"> 2rem</span>; 
+  }<span style="color: #800000;">
+  .about</span>{<span style="color: #ff0000;">
+      color</span>:<span style="color: #0000ff;"> #333</span>;
+  }<span style="color: #800000;">
+  .achieve</span>{<span style="color: #ff0000;">
+      color</span>:<span style="color: #0000ff;">#fff</span>;
+  }</pre>
+                </div>
+                <p>
+                  提取公用的部分，然后在页面上分别引用column-title和about等，这样代码更简洁，维护起来也更方便了。这个例子非常简单，实际上项目中可能有更复杂的情况，总之就要要尽可能的DRY，尽可能的提取重复的东西。
+                </p>
+                <p class="red">结合A网项目</p>
+                <p><img src="img/23.png"></p>
+                <p><img src="img/24.png"></p>
+                <p><b>3、书写顺序</b><br>这个书写顺序指的是各个样式的书写顺序，下面是推荐的CSS书写顺序<br>（1）位置属性(position, top, right, z-index, display,
+                  float等)<br>（2）大小(width, height, padding, margin)<br>（3）文字系列(font, line-height, letter-spacing, color-
+                  text-align等)<br>（4）背景(background, border等)<br>（5）其他(animation,
+                  transition等)<br>书写顺序不一定非得按照上面的推荐来进行，而是根据你自己的习惯，但是最好能保证前后的习惯一致的，或者团队应该有一个共同的代码规范去遵守，这样后期维护起来也会方便许多。</p>
+                <p class="red">结合A网项目</p>
+                <p><img src="img/21.png"></p>
+                <p><img src="img/22.png"></p>
+              </div>
+             
+
+            </div>
+
+          </div>
+
+        </div>
+       
+
+
+
+
+
+    </div>
+  </div>
+</body>
+
+</html>

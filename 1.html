@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Css基础及原理</title>
+    <style>
+        *{
+            margin: 0;padding: 0;    font-family: -apple-system,SF UI Text,Arial,PingFang SC,Hiragino Sans GB,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;
+        }
+        body{
+            background: #eee
+        }
+        div{
+            width: 900px;margin: 20px auto;background: #fff;border: 1px solid #ccc;padding: 30px 20px
+        }
+        h2{
+            font-size: 22px;margin-bottom: 15px
+        }
+        p{
+            line-height: 30px
+        }
+        .red{
+            color: red
+        }
+        ul{
+            list-style: none;overflow: hidden;margin-bottom: 30px
+        }
+        li{
+            margin-top: 10px;line-height: 30px;
+        }
+        .mt20{
+            margin-top: 20px
+        }
+        
+    </style>
+</head>
+<body>
+    <div>
+        <h2>一、行内元素和块级元素的区别和他们的特点是什么？</h2>
+        <p>块级元素会独占一行,默认情况下,其宽度自动填满其父元素宽度.</p>
+        <p>行内元素不会独占一行,相邻的行内元素会排列在同一行里,直到一行排不下,才会换行,其宽度随元素的内容而变化。另外：</p>
+        <ul>
+            <li>1、块级元素可以设置width,height属性。</li> 
+            <li>2、行内元素设置width,height属性无效，它的长度高度主要根据内容决定。</li> 
+            <li>3、块级元素即使设置了宽度,仍然是独占一行。</li> 
+            <li>4、块级元素可以设置margin和padding属性。</li> 
+            <li>5、行内元素的margin和padding属性,水平方向的padding-left,padding-right,margin-left,margin- right都产生边距效果,但竖直方向的padding-top,padding-bottom,margin-top,margin-bottom却不会产生边距效果。</li> 
+            <li>6、块级元素对应于display:block。</li> 
+            <li>7、行内元素对应于display:inline。</li> 
+            <li>8、如果想让元素同时具备块级和行内元素的特性，可以设置display:inline-block。</li> 
+        </ul> 
+        <h2>二、常用的行内元素和块级元素有哪些？</h2>
+        <p>常用行内元素：a、b、span、img、input、select、label、em、button、textarea </p>
+        <p>常用块级元素：div、ul、li、dl、dt、dd、p、h1-h6</p>
+        <p class="red">注：html中有一类元素比较特殊，虽然他们属于行内元素，但是他们是可以设置宽高的，如img、input、select、textarea、button等，他们被称为可置换元素。他们区别一般inline元素是：这些元素拥有内在尺寸,他们可以设置width/height属性。他们的性质同设置了display:inline-block的元素一致。</p>
+        <h2 class="mt20">三、结合A网项目</h2>
+        <p><img src="img/10.png" width="900" ></p>
+        <p><img src="img/11.png" width="900" ></p>       
+    </div>
+    
+</body>
+</html>
